@@ -1,3 +1,4 @@
+// Test change for git detection
 import { useState } from 'react';
 import { AuthProvider } from './context/AuthContext';
 import Sidebar from './components/common/Sidebar';
