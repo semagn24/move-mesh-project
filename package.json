@@ -1,0 +1,14 @@
+{
+    "name": "movie-stream-root",
+    "version": "1.0.0",
+    "description": "Root script to run MovieStream client and server",
+    "scripts": {
+        "install-all": "npm install && cd client && npm install && cd ../server && npm install",
+        "dev": "concurrently \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
+        "server": "npm run dev --prefix server",
+        "client": "npm run dev --prefix client"
+    },
+    "dependencies": {
+        "concurrently": "^8.2.2"
+    }
+}
