@@ -1,0 +1,16 @@
+FROM node:18-alpine
+
+WORKDIR /app
+
+# The context will be the /server directory
+COPY package*.json ./
+RUN npm install
+
+COPY . .
+
+# Create uploads dir if not mounted
+RUN mkdir -p uploads
+
+EXPOSE 5000
+
+CMD ["node", "src/server.js"]
