@@ -7,6 +7,10 @@ import Watch from '../pages/Watch';
 import Profile from '../pages/Profile';
 import About from '../pages/About';
 import ForgotPassword from '../pages/ForgotPassword';
+<<<<<<< HEAD
+=======
+import ResetPassword from '../pages/ResetPassword';
+>>>>>>> origin/main
 import AdminDashboard from '../pages/admin/Dashboard';
 import AddMovie from '../pages/admin/AddMovie';
 import EditMovies from '../pages/admin/EditMovies';
@@ -30,6 +34,10 @@ const AppRoutes = () => {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
+<<<<<<< HEAD
+=======
+            <Route path="/reset-password/:token" element={<ResetPassword />} />
+>>>>>>> origin/main
             <Route path="/movies/:id" element={<Watch />} />
             <Route path="/about" element={<About />} />
             <Route path="/profile" element={user ? <Profile /> : <Navigate to="/login" />} />

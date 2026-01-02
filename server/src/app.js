@@ -1,5 +1,9 @@
 require('dotenv').config();
 const express = require('express');
+<<<<<<< HEAD
+=======
+const path = require('path');
+>>>>>>> origin/main
 const cors = require('cors');
 const session = require('express-session');
 const MySQLStore = require('express-mysql-session')(session);
@@ -10,6 +14,7 @@ app.set('trust proxy', 1); // Trust first proxy (Nginx)
 
 // Middleware
 app.use(cors({
+<<<<<<< HEAD
     origin: [
         'http://localhost:5173',
         'http://127.0.0.1:5173',
@@ -20,11 +25,18 @@ app.use(cors({
         'http://192.168.137.1:5173',
         process.env.CLIENT_PC_IP ? `http://${process.env.CLIENT_PC_IP}:5173` : null
     ].filter(Boolean),
+=======
+    origin: (origin, callback) => callback(null, true), // Allow all origins for debugging
+>>>>>>> origin/main
     credentials: true
 }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+<<<<<<< HEAD
 app.use('/uploads', express.static('../../uploads')); // Adjust path relative to src/app.js
+=======
+app.use('/uploads', express.static(path.join(__dirname, '../../uploads')));
+>>>>>>> origin/main
 
 // Session Store
 const sessionStore = new MySQLStore({

@@ -15,6 +15,7 @@ exports.getMovies = async (req, res) => {
                 ORDER BY view_count DESC, m.created_at DESC
                 LIMIT 12
             `);
+<<<<<<< HEAD
             const moviesWithUrls = movies.map(movie => {
                 const baseUrl = process.env.BASE_URL || 'http://localhost:5003';
                 return {
@@ -23,6 +24,13 @@ exports.getMovies = async (req, res) => {
                     video_url: movie.video ? (movie.video.startsWith('http') ? movie.video : (movie.video.startsWith('/') ? `${baseUrl}${movie.video}` : `${baseUrl}/uploads/videos/${movie.video}`)) : null
                 };
             });
+=======
+            const moviesWithUrls = movies.map(movie => ({
+                ...movie,
+                poster_url: movie.poster ? (movie.poster.startsWith('http') ? movie.poster : (movie.poster.startsWith('/') ? movie.poster : `/uploads/posters/${movie.poster}`)) : null,
+                video_url: movie.video ? (movie.video.startsWith('http') ? movie.video : (movie.video.startsWith('/') ? movie.video : `/uploads/videos/${movie.video}`)) : null
+            }));
+>>>>>>> origin/main
             return res.json({ success: true, data: moviesWithUrls });
         }
 
@@ -37,6 +45,7 @@ exports.getMovies = async (req, res) => {
         query += " ORDER BY created_at DESC";
 
         const [movies] = await pool.query(query, params);
+<<<<<<< HEAD
         const moviesWithUrls = movies.map(movie => {
             const baseUrl = process.env.BASE_URL || 'http://localhost:5003';
             return {
@@ -45,6 +54,13 @@ exports.getMovies = async (req, res) => {
                 video_url: movie.video ? (movie.video.startsWith('http') ? movie.video : (movie.video.startsWith('/') ? `${baseUrl}${movie.video}` : `${baseUrl}/uploads/videos/${movie.video}`)) : null
             };
         });
+=======
+        const moviesWithUrls = movies.map(movie => ({
+            ...movie,
+            poster_url: movie.poster ? (movie.poster.startsWith('http') ? movie.poster : (movie.poster.startsWith('/') ? movie.poster : `/uploads/posters/${movie.poster}`)) : null,
+            video_url: movie.video ? (movie.video.startsWith('http') ? movie.video : (movie.video.startsWith('/') ? movie.video : `/uploads/videos/${movie.video}`)) : null
+        }));
+>>>>>>> origin/main
         res.json({ success: true, data: moviesWithUrls });
 
     } catch (err) {
@@ -60,11 +76,18 @@ exports.getMovieById = async (req, res) => {
             return res.status(404).json({ message: 'Movie not found' });
         }
         const movie = movies[0];
+<<<<<<< HEAD
         const baseUrl = process.env.BASE_URL || 'http://localhost:5002';
         const movieWithUrls = {
             ...movie,
             poster_url: movie.poster ? (movie.poster.startsWith('http') ? movie.poster : (movie.poster.startsWith('/') ? `${baseUrl}${movie.poster}` : `${baseUrl}/uploads/posters/${movie.poster}`)) : null,
             video_url: movie.video ? (movie.video.startsWith('http') ? movie.video : (movie.video.startsWith('/') ? `${baseUrl}${movie.video}` : `${baseUrl}/uploads/videos/${movie.video}`)) : null
+=======
+        const movieWithUrls = {
+            ...movie,
+            poster_url: movie.poster ? (movie.poster.startsWith('http') ? movie.poster : (movie.poster.startsWith('/') ? movie.poster : `/uploads/posters/${movie.poster}`)) : null,
+            video_url: movie.video ? (movie.video.startsWith('http') ? movie.video : (movie.video.startsWith('/') ? movie.video : `/uploads/videos/${movie.video}`)) : null
+>>>>>>> origin/main
         };
 
         // Fetch user progress if logged in
@@ -176,6 +199,7 @@ exports.getContinueWatching = async (req, res) => {
             LIMIT 10
         `, [req.session.user.id]);
 
+<<<<<<< HEAD
         const moviesWithUrls = movies.map(movie => {
             const baseUrl = process.env.BASE_URL || 'http://localhost:5003';
             return {
@@ -184,6 +208,13 @@ exports.getContinueWatching = async (req, res) => {
                 video_url: movie.video ? (movie.video.startsWith('http') ? movie.video : (movie.video.startsWith('/') ? `${baseUrl}${movie.video}` : `${baseUrl}/uploads/videos/${movie.video}`)) : null
             };
         });
+=======
+        const moviesWithUrls = movies.map(movie => ({
+            ...movie,
+            poster_url: movie.poster ? (movie.poster.startsWith('http') ? movie.poster : (movie.poster.startsWith('/') ? movie.poster : `/uploads/posters/${movie.poster}`)) : null,
+            video_url: movie.video ? (movie.video.startsWith('http') ? movie.video : (movie.video.startsWith('/') ? movie.video : `/uploads/videos/${movie.video}`)) : null
+        }));
+>>>>>>> origin/main
 
         res.json({ success: true, data: moviesWithUrls });
     } catch (err) {

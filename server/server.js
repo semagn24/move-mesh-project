@@ -6,8 +6,12 @@ const pool = require('./config/db'); // We can pass the pool to the session stor
 require('dotenv').config();
 
 const app = express();
+<<<<<<< HEAD
 //process.env.PORT ||
 const PORT = 5003;
+=======
+const PORT = process.env.PORT || 5000;
+>>>>>>> origin/main
 
 // Middleware
 const allowedOrigins = [
@@ -29,7 +33,11 @@ app.use('/uploads', express.static('../uploads'));
 // Session Store Options
 const sessionStore = new MySQLStore({
     host: process.env.DB_HOST || 'localhost',
+<<<<<<< HEAD
     port: process.env.DB_PORT || 3306,
+=======
+    port: 3306,
+>>>>>>> origin/main
     user: process.env.DB_USER || 'root',
     password: process.env.DB_PASSWORD || '',
     database: process.env.DB_NAME || 'movie_stream',

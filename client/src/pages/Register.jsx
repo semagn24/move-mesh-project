@@ -22,9 +22,20 @@ const Register = () => {
         const { username, email, password, confirmPassword } = formData;
 
         // Validation
+<<<<<<< HEAD
         if (username.length < 3) return setError('Username too short');
         if (!email.includes('@')) return setError('Invalid email format');
         if (password.length < 6) return setError('Password must be at least 6 characters');
+=======
+        // Validation
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*#?&]{8,}$/;
+
+        if (username.length < 3) return setError('Username must be at least 3 characters');
+        if (username.length > 35) return setError('Username must not exceed 35 characters');
+        if (!emailRegex.test(email)) return setError('Invalid email format');
+        if (!passwordRegex.test(password)) return setError('Password must be at least 8 characters, with 1 letter & 1 number');
+>>>>>>> origin/main
         if (password !== confirmPassword) {
             setError('Passwords do not match');
             return;

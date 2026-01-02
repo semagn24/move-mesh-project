@@ -23,6 +23,15 @@ const Navbar = ({ toggleSidebar }) => {
                     <i className="fa fa-bars"></i>
                 </button>
 
+<<<<<<< HEAD
+=======
+                {/* Mobile Logo */}
+                <Link to="/" className="lg:hidden text-lg font-black text-primary tracking-widest ml-2">
+                    MOVIESTREAM
+                </Link>
+
+                {/* Desktop Breadcrumb/Title */}
+>>>>>>> origin/main
                 <div className="hidden lg:block">
                     <h2 className="text-sm font-bold text-gray-500 uppercase tracking-[0.2em]">
                         {window.location.pathname === '/' ? 'Home' : 'Explore'}

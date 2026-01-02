@@ -6,7 +6,8 @@ const fs = require('fs');
 // __dirname is server/src/middleware
 // We want project_root/uploads. 
 // server/src/middleware -> server/src -> server -> project_root
-const uploadDir = path.join(__dirname, '../../../uploads');
+// server/src/middleware -> server/src -> server -> project_root
+const uploadDir = process.env.UPLOAD_PATH || path.join(__dirname, '../../../uploads');
 const postersDir = path.join(uploadDir, 'posters');
 const videosDir = path.join(uploadDir, 'videos');
 

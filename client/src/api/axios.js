@@ -2,9 +2,15 @@ import axios from 'axios';
 
 // Define available backend nodes for failover
 const NODES = [
+<<<<<<< HEAD
     'http://localhost:5003/api',                  // Native Local (PC1)
     'http://192.168.137.134:5003/api',            // Failover to PC2
     'http://192.168.137.1:5003/api'               // Back to PC1 via IP
+=======
+    '/api',                              // Relative path (uses Vite proxy for local dev)
+    'http://192.168.43.81/api',          // Nginx Load Balancer (PC1) for external access
+    'http://192.168.43.82:5003/api'      // Direct to PC2 (Failover)
+>>>>>>> origin/main
 ];
 
 let currentNodeIndex = 0;

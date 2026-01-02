@@ -65,7 +65,11 @@ const Home = ({ viewMode: initialViewMode }) => {
             {!searchQuery && viewMode === 'all' && movies.length > 0 && (
                 <div className="relative h-[60vh] -mx-6 mb-12 rounded-3xl overflow-hidden group">
                     <img
+<<<<<<< HEAD
                         src={movies[0].poster_url?.startsWith('http') ? movies[0].poster_url : `${window.location.origin}${movies[0].poster_url}`}
+=======
+                        src={movies[0].poster_url?.startsWith('http') ? movies[0].poster_url : (movies[0].poster_url?.startsWith('/') ? movies[0].poster_url : `/uploads/posters/${movies[0].poster_url}`)}
+>>>>>>> origin/main
                         alt={movies[0].title}
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     />

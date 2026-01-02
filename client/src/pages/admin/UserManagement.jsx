@@ -41,7 +41,11 @@ const UserManagement = () => {
         if (!confirm('Are you sure you want to delete this user? This action cannot be undone.')) return;
 
         try {
+<<<<<<< HEAD
             await api.delete(`admin / users / ${id} `);
+=======
+            await api.delete(`admin/users/${id}`);
+>>>>>>> origin/main
             setUsers(users.filter(u => u.id !== id));
             alert('User deleted successfully');
         } catch (err) {
@@ -57,7 +61,11 @@ const UserManagement = () => {
 
     const handleUpdate = async (id) => {
         try {
+<<<<<<< HEAD
             await api.put(`admin / users / ${id} `, editData);
+=======
+            await api.put(`admin/users/${id}`, editData);
+>>>>>>> origin/main
             setEditingUser(null);
             fetchUsers();
         } catch (err) {
@@ -160,8 +168,13 @@ const UserManagement = () => {
                                                         onClick={() => handleDelete(user.id)}
                                                         disabled={isCurrentUser}
                                                         className={`w - 8 h - 8 flex items - center justify - center rounded - lg ${isCurrentUser
+<<<<<<< HEAD
                                                                 ? 'bg-gray-500/10 text-gray-600 cursor-not-allowed'
                                                                 : 'bg-red-500/10 hover:bg-red-500/20 text-red-500'
+=======
+                                                            ? 'bg-gray-500/10 text-gray-600 cursor-not-allowed'
+                                                            : 'bg-red-500/10 hover:bg-red-500/20 text-red-500'
+>>>>>>> origin/main
                                                             } `}
                                                         title={isCurrentUser ? 'You cannot delete your own account' : 'Delete user'}
                                                     >

@@ -31,12 +31,34 @@ exports.initializePayment = async (req, res) => {
 
         const validEmail = (email && email.includes('@')) ? email : (req.session.user.email && req.session.user.email.includes('@')) ? req.session.user.email : 'test@example.com';
 
+<<<<<<< HEAD
+=======
+        // Logic to Split/Truncate Names for Chapa (Max 35 chars)
+        let fName = first_name;
+        let lName = last_name;
+
+        if (!fName) {
+            // Try to split username
+            const nameParts = (req.session.user.username || 'User').split(' ');
+            fName = nameParts[0];
+            lName = nameParts.length > 1 ? nameParts.slice(1).join(' ') : 'User';
+        }
+
+        // Enforce Limits
+        const cleanName = (str) => str ? str.substring(0, 30).trim() : 'User';
+
+>>>>>>> origin/main
         const paymentData = {
             amount: PLAN_PRICE,
             currency: 'ETB',
             email: validEmail,
+<<<<<<< HEAD
             first_name: first_name || req.session.user.username || 'User',
             last_name: last_name || 'User',
+=======
+            first_name: cleanName(fName),
+            last_name: cleanName(lName),
+>>>>>>> origin/main
             tx_ref: tx_ref,
             callback_url: `${process.env.BACKEND_URL || 'http://localhost:5000'}/api/payments/verify`,
             return_url: `${process.env.FRONTEND_URL || 'http://localhost:5173'}/profile?payment=success`,

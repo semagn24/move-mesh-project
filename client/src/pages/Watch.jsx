@@ -196,8 +196,13 @@ const Watch = () => {
                     autoPlay
                     onTimeUpdate={handleProgressUpdate}
                     className="w-full h-full"
+<<<<<<< HEAD
                     poster={movie.poster_url?.startsWith('http') ? movie.poster_url : `${window.location.origin}${movie.poster_url}`}
                     src={movie.video_url?.startsWith('http') ? movie.video_url : `${window.location.origin}${movie.video_url}`}
+=======
+                    poster={movie.poster_url?.startsWith('http') ? movie.poster_url : (movie.poster_url?.startsWith('/') ? movie.poster_url : `/uploads/posters/${movie.poster_url}`)}
+                    src={movie.video_url?.startsWith('http') ? movie.video_url : (movie.video_url?.startsWith('/') ? movie.video_url : `/uploads/videos/${movie.video_url}`)}
+>>>>>>> origin/main
                     style={{ pointerEvents: hasAccess ? 'auto' : 'none' }}
                 >
                     Your browser does not support the video tag.

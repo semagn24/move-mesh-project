@@ -22,12 +22,23 @@ const MovieCard = ({ movie, viewMode }) => {
     const getPosterUrl = () => {
         if (!movie.poster) return 'https://via.placeholder.com/300x450?text=No+Poster';
         if (movie.poster.startsWith('http')) return movie.poster;
+<<<<<<< HEAD
         if (movie.poster_url) {
             if (movie.poster_url.startsWith('http')) return movie.poster_url;
             return `${window.location.origin}${movie.poster_url.startsWith('/') ? '' : '/'}${movie.poster_url}`;
         }
         // Fallback for raw poster field
         return `${window.location.origin}/uploads/posters/${movie.poster}`;
+=======
+
+        // Backend provides full relative path (e.g. /uploads/posters/...)
+        if (movie.poster_url) {
+            return movie.poster_url;
+        }
+
+        // Fallback for raw poster field
+        return `/uploads/posters/${movie.poster}`;
+>>>>>>> origin/main
     };
 
     return (
